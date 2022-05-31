@@ -20,14 +20,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/.../...git"
+    "url": "git+https://github.com/Trim21/gm-fetch.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/.../.../issues"
+    "url": "https://github.com/Trim21/gm-fetch/issues"
   },
-  "homepage": "https://github.com/.../...",
+  "homepage": "https://github.com/Trim21/gm-fetch",
   "dependencies": {
     "tslib": "^2.4.0"
   },
