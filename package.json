@@ -14,7 +14,7 @@
     "format": "prettier -w ./",
     "version": "npm run build",
     "prebuild": "npm run clean",
-    "build": "tsc && npm run rollup",
+    "build": "npm run rollup",
     "rollup": "rollup -c rollup.config.js",
     "clean": "rimraf -r dist"
   },
