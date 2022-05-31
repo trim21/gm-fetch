@@ -66,7 +66,7 @@ function toGmHeaders(
   h: Headers | undefined
 ): { [header: string]: string } | undefined {
   if (!h) {
-    return h;
+    return undefined;
   }
 
   const t: { [header: string]: string } = {};
@@ -78,10 +78,13 @@ function toGmHeaders(
 }
 
 function parseRawHeaders(h: string): Headers {
-  const a = h.split("\r\n").map((value) => {
-    let s = value.split(":");
-    return [s[0], s[1]];
-  });
+  const array = h
+    .trim()
+    .split("\r\n")
+    .map((value) => {
+      let s = value.split(": ");
+      return [s[0], s[1]];
+    });
 
-  return new Headers(a);
+  return new Headers(array);
 }
