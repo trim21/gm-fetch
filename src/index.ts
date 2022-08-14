@@ -16,7 +16,7 @@ function XHR(request: Request, data: string | undefined): Promise<Response> {
   return new Promise((resolve, reject) => {
     GM.xmlHttpRequest({
       url: request.url,
-      method: gmXHRMethod(request.method),
+      method: gmXHRMethod(request.method.toUpperCase()),
       headers: toGmHeaders(request.headers),
       data: data,
       onload: (res) => resolve(parseGMResponse(res)),
@@ -59,7 +59,7 @@ function gmXHRMethod(
     return method;
   }
 
-  throw new Error("");
+  throw new Error(`unsupported http method ${method}`);
 }
 
 function toGmHeaders(
