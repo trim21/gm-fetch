@@ -78,7 +78,7 @@ function toGmHeaders(
 }
 
 function parseRawHeaders(h: string): Headers {
-  const array = h
+  const array: [string, string][] = h
     .trim()
     .split("\r\n")
     .map((value) => {
