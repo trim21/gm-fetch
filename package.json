@@ -8,7 +8,7 @@
   ],
   "type": "module",
   "module": "dist/index.js",
-  "types": "dist/ndex.d.ts",
+  "types": "dist/index.d.ts",
   "jsdelivr": "dist/gm_fetch.js",
   "scripts": {
     "format": "prettier -w ./",
