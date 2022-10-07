@@ -18,22 +18,23 @@ using fetch based on `GM.xmlHttpRequest` in userscript.
 // @connect     httpbin.org
 // ==/UserScript==
 
-GM_fetch("https://httpbin.org/headers", { method: "POST" })
-  .then((res) => res.json())
-  .then(console.log);
+
+async () => {
+  const res = await GM_fetch("https://httpbin.org/headers", { method: "POST" });
+  const data = await res.json();
+  console.log(data);
+}
 ```
 
 ## if you are using js bundler
 
-```javascript
-const GM_fetch = require("@trim21/gm-fetch");
-```
-
-esm support:
+esm is support:
 
 ```javascript
 import GM_fetch from "@trim21/gm-fetch";
 ```
+
+CommonJS is not supported.
 
 ## Licence
 

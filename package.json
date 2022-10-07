@@ -6,21 +6,19 @@
     "userscript",
     "typescript"
   ],
-  "main": "dist/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/esm/index.d.ts",
+  "type": "module",
+  "module": "dist/index.js",
+  "types": "dist/ndex.d.ts",
   "jsdelivr": "dist/gm_fetch.js",
   "scripts": {
     "format": "prettier -w ./",
     "version": "npm run build",
-    "prebuild": "npm run clean",
-    "build": "npm run rollup",
-    "rollup": "rollup -c rollup.config.js",
-    "clean": "rimraf -r dist"
+    "prebuild": "rimraf -r dist",
+    "build": "tsc && webpack"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Trim21/gm-fetch.git"
+    "url": "git+https://github.com/trim21/gm-fetch.git"
   },
   "author": "",
   "license": "MIT",
@@ -32,15 +30,13 @@
     "tslib": "^2.4.0"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^22.0.2",
-    "@rollup/plugin-node-resolve": "^14.1.0",
-    "@rollup/plugin-typescript": "^8.5.0",
     "@types/greasemonkey": "^4.0.4",
+    "esbuild-loader": "^2.20.0",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
-    "rollup": "^2.79.0",
-    "rollup-plugin-delete": "^2.0.0",
-    "typescript": "^4.8.3"
+    "typescript": "^4.8.3",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
   },
   "publishConfig": {
     "access": "public"
