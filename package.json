@@ -10,6 +10,10 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "jsdelivr": "dist/gm_fetch.js",
+  "files": [
+    "package.json",
+    "./dist/"
+  ],
   "scripts": {
     "format": "prettier -w ./",
     "version": "npm run build",
