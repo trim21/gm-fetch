@@ -12,6 +12,8 @@
   "jsdelivr": "dist/gm_fetch.js",
   "files": [
     "package.json",
+    "README.md",
+    "LICENSE",
     "./dist/"
   ],
   "scripts": {
