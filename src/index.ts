@@ -1,7 +1,4 @@
-export default async function GM_fetch(
-  input: RequestInfo | URL,
-  init?: RequestInit
-): Promise<Response> {
+export default async function GM_fetch(input: RequestInfo | URL, init?: RequestInit): Promise<Response> {
   const request = new Request(input, init);
 
   let data: string | undefined;
@@ -33,38 +30,22 @@ function parseGMResponse(res: GM.Response<any>): Response {
   });
 }
 
-function gmXHRMethod(
-  method: string
-):
-  | "GET"
-  | "POST"
-  | "PUT"
-  | "DELETE"
-  | "PATCH"
-  | "HEAD"
-  | "TRACE"
-  | "OPTIONS"
-  | "CONNECT" {
-  if (
-    method === "GET" ||
-    method === "POST" ||
-    method === "PUT" ||
-    method === "DELETE" ||
-    method === "PATCH" ||
-    method === "HEAD" ||
-    method === "TRACE" ||
-    method === "OPTIONS" ||
-    method === "CONNECT"
-  ) {
+const httpMethods = ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "TRACE", "OPTIONS", "CONNECT"] as const;
+
+// a ts type helper to narrow type
+function includes<T extends U, U>(array: ReadonlyArray<T>, element: U): element is T {
+  return array.includes(element as T);
+}
+
+function gmXHRMethod(method: string): typeof httpMethods[number] {
+  if (includes(httpMethods, method)) {
     return method;
   }
 
   throw new Error(`unsupported http method ${method}`);
 }
 
-function toGmHeaders(
-  h: Headers | undefined
-): { [header: string]: string } | undefined {
+function toGmHeaders(h: Headers | undefined): { [header: string]: string } | undefined {
   if (!h) {
     return undefined;
   }

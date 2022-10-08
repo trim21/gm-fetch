@@ -6,6 +6,10 @@
     "userscript",
     "typescript"
   ],
+  "prettier": {
+    "printWidth": 120,
+    "trailingComma": "all"
+  },
   "type": "module",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",

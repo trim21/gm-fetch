@@ -18,12 +18,11 @@ using fetch based on `GM.xmlHttpRequest` in userscript.
 // @connect     httpbin.org
 // ==/UserScript==
 
-
 async () => {
   const res = await GM_fetch("https://httpbin.org/headers", { method: "POST" });
   const data = await res.json();
   console.log(data);
-}
+};
 ```
 
 ## if you are using js bundler
