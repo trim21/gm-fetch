@@ -17,7 +17,7 @@ function XHR(request: Request, data: string | undefined): Promise<Response> {
       headers: toGmHeaders(request.headers),
       data: data,
       onload: (res) => resolve(parseGMResponse(res)),
-      onerror: reject,
+      onerror: (err) => reject(new TypeError("Failed to fetch: " + err.finalUrl)),
     });
   });
 }
