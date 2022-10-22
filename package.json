@@ -25,7 +25,14 @@
     "format": "prettier -w ./",
     "version": "npm run build",
     "prebuild": "rimraf -r dist",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "prepare": "husky install",
+    "lint-staged": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json}": [
+      "prettier --ignore-path ./.prettierignore --write "
+    ]
   },
   "repository": {
     "type": "git",
@@ -39,6 +46,8 @@
   "homepage": "https://github.com/Trim21/gm-fetch",
   "devDependencies": {
     "@types/greasemonkey": "^4.0.4",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
     "rollup": "^3.2.3",
