@@ -27,13 +27,17 @@ async () => {
 
 ## if you are using js bundler
 
-esm is support:
+ES Module:
 
 ```javascript
 import GM_fetch from "@trim21/gm-fetch";
 ```
 
-CommonJS is not supported.
+CommonJS:
+
+```javascript
+const GM_fetch = require("@trim21/gm-fetch");
+```
 
 ## Licence
 
