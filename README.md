@@ -6,13 +6,14 @@ using fetch based on `GM.xmlHttpRequest` in userscript.
 
 ## Introduction
 
+It's not 100% same with fetch API because some security limit like corss site request doesn't exist on `GM.xmlHttpRequest`.
+
+You can set some HTTP headers allowed by `GM.xmlHttpRequest` but not allowed by standard fetch API.
+
 ```javascript
 // ==UserScript==
 // @name        new user script
-// @namespace   https://trim21.me/
-// @description hello
 // @version     0.0.1
-// @author      Trim21 <trim21me@gmail.com>
 // @match       http*://*/*
 // @grant       GM.xmlHttpRequest
 // @require     https://cdn.jsdelivr.net/npm/@trim21/gm-fetch
