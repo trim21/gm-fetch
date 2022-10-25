@@ -2,6 +2,8 @@
 
 using fetch based on `GM.xmlHttpRequest` in userscript.
 
+**Don't forget to add `@grant GM.xmlHttpRequest` and `@connect` in your metadata**
+
 ## Introduction
 
 ```javascript
