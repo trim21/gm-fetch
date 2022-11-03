@@ -46,7 +46,7 @@ const GM_fetch = require("@trim21/gm-fetch");
 
 ## Browser Compatibility
 
-This package doesn't include a polyfill, so requires browser with fetch API support.
+This package is using `Request` and `Response` class, it so requires a browser with fetch API support.
 
 https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API#browser_compatibility
 
