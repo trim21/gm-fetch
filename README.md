@@ -50,7 +50,7 @@ This package doesn't include a polyfill, so requires browser with fetch API supp
 
 https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API#browser_compatibility
 
-If you really want to support some very old browser, you need to add a polyfill.
+If you really want to support some very old browsers, you can use <https://polyfill.io> to add `fetch` polyfill automatically based user's browser version.
 
 ```js
 // @require     https://polyfill.io/v3/polyfill.min.js?features=fetch
