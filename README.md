@@ -10,10 +10,6 @@ It's not 100% same with fetch API because some security limit like corss site re
 
 You can set some HTTP headers allowed by `GM.xmlHttpRequest` but not allowed by standard fetch API.
 
-This package doesn't include a polyfill, so requires browser with fetch API support.
-
-https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API#browser_compatibility
-
 ## Example
 
 ```javascript
@@ -46,6 +42,19 @@ CommonJS:
 
 ```javascript
 const GM_fetch = require("@trim21/gm-fetch");
+```
+
+## Browser Compatibility
+
+This package doesn't include a polyfill, so requires browser with fetch API support.
+
+https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API#browser_compatibility
+
+If you really want to support some very old browser, you need to add a polyfill.
+
+```js
+// @require     https://polyfill.io/v3/polyfill.min.js?features=fetch
+// @require     https://cdn.jsdelivr.net/npm/@trim21/gm-fetch
 ```
 
 ## Licence
