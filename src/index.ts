@@ -1,3 +1,5 @@
+import { parseGMResponse } from "./utils";
+
 export default async function GM_fetch(input: RequestInfo | URL, init?: RequestInit): Promise<Response> {
   const request = new Request(input, init);
 
@@ -11,22 +13,29 @@ export default async function GM_fetch(input: RequestInfo | URL, init?: RequestI
 
 function XHR(request: Request, data: string | undefined): Promise<Response> {
   return new Promise((resolve, reject) => {
+    if (request.signal && request.signal.aborted) {
+      return reject(new DOMException("Aborted", "AbortError"));
+    }
+
     GM.xmlHttpRequest({
       url: request.url,
       method: gmXHRMethod(request.method.toUpperCase()),
       headers: toGmHeaders(request.headers),
       data: data,
-      onload: (res) => resolve(parseGMResponse(res)),
-      onerror: (err) => reject(new TypeError("Failed to fetch: " + err.finalUrl)),
+      responseType: "blob",
+      onload(res) {
+        resolve(parseGMResponse(res));
+      },
+      onabort() {
+        reject(new DOMException("Aborted", "AbortError"));
+      },
+      ontimeout() {
+        reject(new TypeError("Network request failed, timeout"));
+      },
+      onerror(err) {
+        reject(new TypeError("Failed to fetch: " + err.finalUrl));
+      },
     });
-  });
-}
-
-function parseGMResponse(res: GM.Response<any>): Response {
-  return new Response(res.responseText, {
-    statusText: res.statusText,
-    status: res.status,
-    headers: parseRawHeaders(res.responseHeaders),
   });
 }
 
@@ -56,16 +65,4 @@ function toGmHeaders(h: Headers | undefined): { [header: string]: string } | und
   });
 
   return t;
-}
-
-function parseRawHeaders(h: string): Headers {
-  const array: [string, string][] = h
-    .trim()
-    .split("\r\n")
-    .map((value) => {
-      let s = value.split(": ");
-      return [s[0], s[1]];
-    });
-
-  return new Headers(array);
 }
