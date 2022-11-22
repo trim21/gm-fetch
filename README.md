@@ -6,7 +6,9 @@ using fetch based on `GM.xmlHttpRequest` in userscript.
 
 ## Introduction
 
-It's not 100% same with fetch API because some security limit like corss site request doesn't exist on `GM.xmlHttpRequest`.
+It's not 100% same with fetch API because some security limit like cors site request doesn't exist on `GM.xmlHttpRequest`.
+
+Also doesn't support `AbortSignal`.
 
 You can set some HTTP headers allowed by `GM.xmlHttpRequest` but not allowed by standard fetch API.
 
