@@ -39,7 +39,6 @@ module.exports = {
       format: "iife",
       name: "GM_fetch",
       file: pkg.jsdelivr,
-      sourcemap: "inline",
     },
   ],
 };
