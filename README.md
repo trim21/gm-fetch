@@ -8,7 +8,7 @@ using fetch based on `GM.xmlHttpRequest` in userscript.
 
 It's not 100% same with fetch API because some security limit like cors site request doesn't exist on `GM.xmlHttpRequest`.
 
-Also doesn't support `AbortSignal`.
+And `AbortSignal` is not supported very well due to the limitation of `GM.xmlHttpRequest`.
 
 You can set some HTTP headers allowed by `GM.xmlHttpRequest` but not allowed by standard fetch API.
 

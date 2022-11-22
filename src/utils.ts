@@ -13,7 +13,7 @@ export function parseRawHeaders(h: string): Headers {
 }
 
 export function parseGMResponse(res: GM.Response<any>): Response {
-  const r = new Response(res.response as ArrayBuffer, {
+  const r = new Response(res.response as Blob, {
     statusText: res.statusText,
     status: res.status,
     headers: parseRawHeaders(res.responseHeaders),
