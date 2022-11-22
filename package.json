@@ -17,7 +17,7 @@
   "jsdelivr": "dist/gm_fetch.js",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
+      "types": "./dist/src/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
     },
