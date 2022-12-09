@@ -20,7 +20,7 @@ function XHR(request: Request, init: RequestInit | undefined, data: string | und
     GM.xmlHttpRequest({
       url: request.url,
       method: gmXHRMethod(request.method.toUpperCase()),
-      headers: toGmHeaders(init?.headers),
+      headers: Object.fromEntries(new Headers(init?.headers).entries()),
       data: data,
       responseType: "blob",
       onload(res) {
@@ -52,20 +52,4 @@ function gmXHRMethod(method: string): typeof httpMethods[number] {
   }
 
   throw new Error(`unsupported http method ${method}`);
-}
-
-function toGmHeaders(h: HeadersInit | undefined): { [p: string]: string } | undefined {
-  if (h === undefined) {
-    return undefined;
-  }
-
-  if (Array.isArray(h)) {
-    return Object.fromEntries(h);
-  }
-
-  if (h instanceof Headers) {
-    return Object.fromEntries(Array.from(h.entries()).map(([value, key]) => [key, value]));
-  }
-
-  return h;
 }
