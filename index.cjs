@@ -39,7 +39,7 @@ function XHR(request, init, data) {
         GM.xmlHttpRequest({
             url: request.url,
             method: gmXHRMethod(request.method.toUpperCase()),
-            headers: toGmHeaders(init?.headers),
+            headers: Object.fromEntries(new Headers(init?.headers).entries()),
             data: data,
             responseType: "blob",
             onload(res) {
@@ -67,19 +67,6 @@ function gmXHRMethod(method) {
         return method;
     }
     throw new Error(`unsupported http method ${method}`);
-}
-function toGmHeaders(h) {
-    if (h === undefined) {
-        return undefined;
-    }
-    if (Array.isArray(h)) {
-        return Object.fromEntries(h);
-    }
-    if (h instanceof Headers) {
-        console.log(h.entries());
-        return Object.fromEntries(Array.from(h.entries()).map(([value, key]) => [key, value]));
-    }
-    return h;
 }
 
 module.exports = GM_fetch;
