@@ -64,7 +64,6 @@ function toGmHeaders(h: HeadersInit | undefined): { [p: string]: string } | unde
   }
 
   if (h instanceof Headers) {
-    console.log(h.entries());
     return Object.fromEntries(Array.from(h.entries()).map(([value, key]) => [key, value]));
   }
 
