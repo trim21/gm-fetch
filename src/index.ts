@@ -8,10 +8,10 @@ export default async function GM_fetch(input: RequestInfo | URL, init?: RequestI
     data = await request.text();
   }
 
-  return await XHR(request, data);
+  return await XHR(request, init, data);
 }
 
-function XHR(request: Request, data: string | undefined): Promise<Response> {
+function XHR(request: Request, init: RequestInit | undefined, data: string | undefined): Promise<Response> {
   return new Promise((resolve, reject) => {
     if (request.signal && request.signal.aborted) {
       return reject(new DOMException("Aborted", "AbortError"));
@@ -20,7 +20,7 @@ function XHR(request: Request, data: string | undefined): Promise<Response> {
     GM.xmlHttpRequest({
       url: request.url,
       method: gmXHRMethod(request.method.toUpperCase()),
-      headers: toGmHeaders(request.headers),
+      headers: toGmHeaders(init?.headers),
       data: data,
       responseType: "blob",
       onload(res) {
@@ -54,15 +54,19 @@ function gmXHRMethod(method: string): typeof httpMethods[number] {
   throw new Error(`unsupported http method ${method}`);
 }
 
-function toGmHeaders(h: Headers | undefined): { [header: string]: string } | undefined {
-  if (!h) {
+function toGmHeaders(h: HeadersInit | undefined): { [p: string]: string } | undefined {
+  if (h === undefined) {
     return undefined;
   }
 
-  const t: { [header: string]: string } = {};
-  h.forEach((value, key) => {
-    t[value] = key;
-  });
+  if (Array.isArray(h)) {
+    return Object.fromEntries(h);
+  }
 
-  return t;
+  if (h instanceof Headers) {
+    console.log(h.entries());
+    return Object.fromEntries(Array.from(h.entries()).map(([value, key]) => [key, value]));
+  }
+
+  return h;
 }
