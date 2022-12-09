@@ -27,9 +27,9 @@ async function GM_fetch(input, init) {
     if (init?.body) {
         data = await request.text();
     }
-    return await XHR(request, data);
+    return await XHR(request, init, data);
 }
-function XHR(request, data) {
+function XHR(request, init, data) {
     return new Promise((resolve, reject) => {
         if (request.signal && request.signal.aborted) {
             return reject(new DOMException("Aborted", "AbortError"));
@@ -37,7 +37,7 @@ function XHR(request, data) {
         GM.xmlHttpRequest({
             url: request.url,
             method: gmXHRMethod(request.method.toUpperCase()),
-            headers: toGmHeaders(request.headers),
+            headers: toGmHeaders(init?.headers),
             data: data,
             responseType: "blob",
             onload(res) {
@@ -67,14 +67,17 @@ function gmXHRMethod(method) {
     throw new Error(`unsupported http method ${method}`);
 }
 function toGmHeaders(h) {
-    if (!h) {
+    if (h === undefined) {
         return undefined;
     }
-    const t = {};
-    h.forEach((value, key) => {
-        t[value] = key;
-    });
-    return t;
+    if (Array.isArray(h)) {
+        return Object.fromEntries(h);
+    }
+    if (h instanceof Headers) {
+        console.log(h.entries());
+        return Object.fromEntries(Array.from(h.entries()).map(([value, key]) => [key, value]));
+    }
+    return h;
 }
 
 export { GM_fetch as default };
