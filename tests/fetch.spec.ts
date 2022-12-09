@@ -74,8 +74,8 @@ describe("call", function () {
     expect(res.url).toBe("https://example.com/u");
     expect(await res.text()).toBe("test");
     expect(realHeader).toMatchObject({
-      "Content-Type": "application/json",
-      Authorization: "Bearer xxxxxx",
+      "content-type": "application/json",
+      authorization: "Bearer xxxxxx",
     });
   });
 });
