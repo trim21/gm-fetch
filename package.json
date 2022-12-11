@@ -1,0 +1,75 @@
+{
+  "name": "@trim21/gm-fetch",
+  "version": "0.1.12",
+  "description": "fetch for UserScript",
+  "keywords": [
+    "userscript",
+    "typescript"
+  ],
+  "prettier": {
+    "printWidth": 120,
+    "trailingComma": "all"
+  },
+  "sideEffects": false,
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "./dist/types/src/index.d.ts",
+  "jsdelivr": "dist/gm_fetch.js",
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "package.json",
+    "README.md",
+    "LICENSE",
+    "./src/",
+    "./dist/"
+  ],
+  "scripts": {
+    "format": "prettier -w ./",
+    "version": "npm run build",
+    "prebuild": "rimraf -r dist",
+    "build": "rollup -c",
+    "test": "tsc --noEmit && jest",
+    "prepare": "husky install",
+    "lint-staged": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json}": [
+      "prettier --ignore-path ./.prettierignore --write "
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trim21/gm-fetch.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Trim21/gm-fetch/issues"
+  },
+  "homepage": "https://github.com/Trim21/gm-fetch",
+  "devDependencies": {
+    "@types/greasemonkey": "^4.0.4",
+    "@types/jest": "^29.2.4",
+    "husky": "^8.0.2",
+    "jest": "^29.3.1",
+    "lint-staged": "^13.1.0",
+    "prettier": "^2.8.0",
+    "rimraf": "^3.0.2",
+    "rollup": "^3.6.0",
+    "rollup-plugin-typescript2": "^0.34.1",
+    "ts-jest": "^29.0.3",
+    "typescript": "^4.9.3",
+    "unbuild": "^1.0.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {}
+}
