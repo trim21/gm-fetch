@@ -13,7 +13,7 @@
   "sideEffects": false,
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
-  "types": "dist/src/index.d.ts",
+  "types": "./dist/types/src/index.d.ts",
   "jsdelivr": "dist/gm_fetch.js",
   "exports": {
     ".": {
@@ -27,6 +27,7 @@
     "package.json",
     "README.md",
     "LICENSE",
+    "./src/",
     "./dist/"
   ],
   "scripts": {
