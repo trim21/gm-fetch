@@ -39,7 +39,7 @@ jobs:
         if: ${{ github.event_name == 'push' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./
           user_name: "github-actions"
           user_email: "github-actions@github.com"
           enable_jekyll: false
