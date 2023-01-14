@@ -33,7 +33,7 @@
   "scripts": {
     "format": "prettier -w ./",
     "version": "npm run build",
-    "prebuild": "rimraf -r dist",
+    "prebuild": "rimraf dist",
     "build": "rollup -c",
     "test": "tsc --noEmit && jest",
     "prepare": "husky install",
