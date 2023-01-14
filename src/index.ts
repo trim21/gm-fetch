@@ -46,7 +46,7 @@ function includes<T extends U, U>(array: ReadonlyArray<T>, element: U): element 
   return array.includes(element as T);
 }
 
-function gmXHRMethod(method: string): typeof httpMethods[number] {
+function gmXHRMethod(method: string): (typeof httpMethods)[number] {
   if (includes(httpMethods, method)) {
     return method;
   }
