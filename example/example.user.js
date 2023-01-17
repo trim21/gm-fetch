@@ -5,7 +5,7 @@
 // @version      0.0.1
 // @author       Trim21 <trim21me@gmail.com>
 // @license      MIT
-// @match        https://example.com/*
+// @match        *://example.com/*
 // @grant        GM.xmlHttpRequest
 // @connect      httpbin.org
 // ==/UserScript==
