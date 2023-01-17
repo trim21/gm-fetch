@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         test gm-fetch master branch
-// @require      https://github.com/trim21/gm-fetch/raw/gh-pages/gm_fetch.js
+// @require      https://cdn.jsdelivr.net/npm/@trim21/gm-fetch
 // @namespace    https://trim21.me/
 // @version      0.0.1
 // @author       Trim21 <trim21me@gmail.com>
 // @license      MIT
-// @match        http://example.com/*
+// @match        https://example.com/*
 // @grant        GM.xmlHttpRequest
 // @connect      httpbin.org
 // ==/UserScript==
