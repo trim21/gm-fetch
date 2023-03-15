@@ -1,6 +1,6 @@
 {
   "name": "@trim21/gm-fetch",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "fetch for UserScript",
   "keywords": [
     "userscript",
