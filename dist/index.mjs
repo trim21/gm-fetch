@@ -53,6 +53,9 @@ class ResImpl {
         return Promise.resolve(this.rawBody.slice(0, this.rawBody.length, this.rawBody.type));
     }
     clone() {
+        if (this.bodyUsed) {
+            throw new TypeError("Failed to execute 'clone' on 'Response': body stream already read");
+        }
         return new ResImpl(this.rawBody, this.init);
     }
     formData() {
