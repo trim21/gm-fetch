@@ -1,4 +1,5 @@
 import { describe, it, expect } from "@jest/globals";
+import { Blob } from "buffer";
 
 import { parseRawHeaders } from "../src/utils";
 import GM_fetch from "../src";
@@ -25,7 +26,7 @@ describe("call", function () {
           status: 200,
           responseXML: false,
           statusText: "",
-          response: Buffer.from("test", "utf8"),
+          response: new Blob([Buffer.from("test", "utf8")]),
           context: undefined,
         });
       });
@@ -55,7 +56,7 @@ describe("call", function () {
         status: 200,
         responseXML: false,
         statusText: "",
-        response: Buffer.from("test", "utf8"),
+        response: new Blob([Buffer.from("test", "utf8")]),
         context: undefined,
       });
     };

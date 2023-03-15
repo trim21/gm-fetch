@@ -24,7 +24,7 @@ function XHR(request: Request, init: RequestInit | undefined, data: string | und
       data: data,
       responseType: "blob",
       onload(res) {
-        resolve(parseGMResponse(res));
+        resolve(parseGMResponse(request, res));
       },
       onabort() {
         reject(new DOMException("Aborted", "AbortError"));
