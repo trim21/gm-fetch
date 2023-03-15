@@ -9,16 +9,96 @@ function parseRawHeaders(h) {
     });
     return new Headers(array);
 }
-function parseGMResponse(res) {
-    const r = new Response(res.response, {
+function parseGMResponse(req, res) {
+    return new ResImpl(res.response, {
+        statusCode: res.status,
         statusText: res.statusText,
-        status: res.status,
         headers: parseRawHeaders(res.responseHeaders),
+        finalUrl: res.finalUrl,
+        redirected: res.finalUrl === req.url,
     });
-    Object.defineProperty(r, "url", {
-        value: res.finalUrl,
+}
+class ResImpl {
+    constructor(body, init) {
+        this.rawBody = body;
+        this.init = init;
+        this.body = toReadableStream(body);
+        const { headers, statusCode, statusText, finalUrl, redirected } = init;
+        this.headers = headers;
+        this.status = statusCode;
+        this.statusText = statusText;
+        this.url = finalUrl;
+        this.type = "basic";
+        this.redirected = redirected;
+        this._bodyUsed = false;
+    }
+    get bodyUsed() {
+        return this._bodyUsed;
+    }
+    get ok() {
+        return this.status < 300;
+    }
+    arrayBuffer() {
+        if (this.bodyUsed) {
+            throw new TypeError("Failed to execute 'arrayBuffer' on 'Response': body stream already read");
+        }
+        this._bodyUsed = true;
+        return this.rawBody.arrayBuffer();
+    }
+    blob() {
+        if (this.bodyUsed) {
+            throw new TypeError("Failed to execute 'blob' on 'Response': body stream already read");
+        }
+        this._bodyUsed = true;
+        return Promise.resolve(this.rawBody.slice(0, this.rawBody.length, this.rawBody.type));
+    }
+    clone() {
+        return new ResImpl(this.rawBody, this.init);
+    }
+    formData() {
+        if (this.bodyUsed) {
+            throw new TypeError("Failed to execute 'formData' on 'Response': body stream already read");
+        }
+        this._bodyUsed = true;
+        return this.rawBody.text().then(decode);
+    }
+    async json() {
+        if (this.bodyUsed) {
+            throw new TypeError("Failed to execute 'json' on 'Response': body stream already read");
+        }
+        this._bodyUsed = true;
+        return JSON.parse(await this.rawBody.text());
+    }
+    text() {
+        if (this.bodyUsed) {
+            throw new TypeError("Failed to execute 'text' on 'Response': body stream already read");
+        }
+        this._bodyUsed = true;
+        return this.rawBody.text();
+    }
+}
+function decode(body) {
+    const form = new FormData();
+    body
+        .trim()
+        .split("&")
+        .forEach(function (bytes) {
+        if (bytes) {
+            const split = bytes.split("=");
+            const name = split.shift()?.replace(/\+/g, " ");
+            const value = split.join("=").replace(/\+/g, " ");
+            form.append(decodeURIComponent(name), decodeURIComponent(value));
+        }
     });
-    return r;
+    return form;
+}
+function toReadableStream(value) {
+    return new ReadableStream({
+        start(controller) {
+            controller.enqueue(value);
+            controller.close();
+        },
+    });
 }
 
 async function GM_fetch(input, init) {
@@ -41,7 +121,7 @@ function XHR(request, init, data) {
             data: data,
             responseType: "blob",
             onload(res) {
-                resolve(parseGMResponse(res));
+                resolve(parseGMResponse(request, res));
             },
             onabort() {
                 reject(new DOMException("Aborted", "AbortError"));
