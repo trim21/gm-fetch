@@ -83,6 +83,9 @@ class ResImpl implements Response {
   }
 
   clone(): Response {
+    if (this.bodyUsed) {
+      throw new TypeError("Failed to execute 'clone' on 'Response': body stream already read");
+    }
     return new ResImpl(this.rawBody, this.init);
   }
 

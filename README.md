@@ -50,15 +50,6 @@ const GM_fetch = require("@trim21/gm-fetch");
 
 This package is using `Request` and `Response` class, it so requires a browser with fetch API support.
 
-https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API#browser_compatibility
-
-If you really want to support some very old browsers, you can use <https://polyfill.io> to add `fetch` polyfill automatically based user's browser version.
-
-```js
-// @require     https://polyfill.io/v3/polyfill.min.js?features=fetch
-// @require     https://cdn.jsdelivr.net/npm/@trim21/gm-fetch
-```
-
 ## Licence
 
 MIT
