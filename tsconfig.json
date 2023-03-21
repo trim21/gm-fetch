@@ -12,7 +12,7 @@
     "declarationMap": true,
     "sourceMap": true,
     "strict": true,
-    "skipLibCheck": false
+    "skipLibCheck": true
   },
   "exclude": ["./dist"]
 }
