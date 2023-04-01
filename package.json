@@ -66,7 +66,7 @@
     "rollup-plugin-typescript2": "^0.34.1",
     "ts-jest": "^29.0.5",
     "typescript": "^5.0.3",
-    "unbuild": "^1.1.2"
+    "unbuild": "^1.2.0"
   },
   "publishConfig": {
     "access": "public"
