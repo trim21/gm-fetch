@@ -54,7 +54,7 @@ This package is using `Request` and `Response` class, it so requires a browser w
 
 You will need node>=16, and enable corepack
 
-```shell
+```bash
 corepack enable
 corepack prepare --activate
 yarn
