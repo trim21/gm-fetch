@@ -31,7 +31,7 @@ jobs:
 
       - run: yarn
 
-      - run: npm run format
+      - run: prettier --list-different --check ./
 
       - run: npx tsc
 

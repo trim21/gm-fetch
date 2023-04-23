@@ -32,7 +32,7 @@
     "./dist/"
   ],
   "scripts": {
-    "format": "prettier -w ./",
+    "format": "prettier --list-different -w ./",
     "version": "npm run build",
     "prebuild": "rimraf dist",
     "build": "rollup -c",
@@ -41,7 +41,7 @@
     "lint-staged": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json}": [
+    "*.{js,jsx,ts,tsx,json,yml,yaml}": [
       "prettier --ignore-path ./.prettierignore --write "
     ]
   },
