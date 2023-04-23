@@ -31,7 +31,7 @@ jobs:
 
       - run: yarn
 
-      - run: prettier --list-different --check ./
+      - run: yarn exec prettier --list-different --check ./
 
       - run: npx tsc
 
