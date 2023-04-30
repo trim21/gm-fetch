@@ -1083,7 +1083,7 @@ __metadata:
     rimraf: ^5.0.0
     rollup: ^3.20.2
     rollup-plugin-typescript2: ^0.34.1
-    ts-jest: ^29.0.5
+    ts-jest: ^29.1.0
     typescript: ^5.0.3
     unbuild: ^1.2.0
   languageName: unknown
@@ -4616,7 +4616,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-jest@npm:^29.0.5":
+"ts-jest@npm:^29.1.0":
   version: 29.1.0
   resolution: "ts-jest@npm:29.1.0"
   dependencies:
