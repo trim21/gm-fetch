@@ -2739,15 +2739,15 @@ __metadata:
   linkType: hard
 
 "jackspeak@npm:^2.0.3":
-  version: 2.1.2
-  resolution: "jackspeak@npm:2.1.2"
+  version: 2.1.4
+  resolution: "jackspeak@npm:2.1.4"
   dependencies:
     "@pkgjs/parseargs": ^0.11.0
     cliui: "github:isaacs/cliui#isaacs/esm-cjs-consistency"
   dependenciesMeta:
     "@pkgjs/parseargs":
       optional: true
-  checksum: de3bd506c973a0315b30e242cb5671187b1a8f6b1daca38096c8ce73856ec65a3471c0666394d417592a75932d6a60483afae709d33de91448af9c4e7525e570
+  checksum: 6071e1a6a5382dff4f34a3647a8ad72accd611939d89760217d75e82200d0d8be669062d1d490748e9eb351754fc73e46505f0edfabfd3988802ef771d1b66f2
   languageName: node
   linkType: hard
 
