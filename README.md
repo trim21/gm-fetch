@@ -40,7 +40,7 @@ ES Module:
 import GM_fetch from "@trim21/gm-fetch";
 ```
 
-CommonJS:
+CommonJS (not recommended):
 
 ```javascript
 const GM_fetch = require("@trim21/gm-fetch");

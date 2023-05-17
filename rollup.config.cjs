@@ -1,18 +1,19 @@
 const typescript = require("rollup-plugin-typescript2");
 const pkg = require("./package.json");
-const path = require("path");
-
-const sourcemapPathTransform = (relativeSourcePath, sourcemapPath) => {
-  // 将会把相对路径替换为绝对路径
-  return path.relative(__dirname, path.resolve(path.dirname(sourcemapPath), relativeSourcePath));
-};
 
 module.exports = {
   input: "./src/index.ts",
   plugins: [
     typescript({
       tsconfig: "tsconfig.json",
-      useTsconfigDeclarationDir: true,
+      tsconfigOverride: {
+        compilerOptions: {
+          rootDir: "./src/",
+          outDir: "./dist/tmp/",
+          declarationDir: "./dist/type/",
+        },
+        exclude: ["./dist/", "./tests/"],
+      },
     }),
   ],
   output: [
@@ -23,7 +24,6 @@ module.exports = {
       exports: "default",
       sourcemap: true,
       sourcemapExcludeSources: false,
-      sourcemapPathTransform,
     },
     // CommonJS (for Node) build.
     {
@@ -32,7 +32,6 @@ module.exports = {
       exports: "default",
       sourcemap: true,
       sourcemapExcludeSources: false,
-      sourcemapPathTransform,
     },
     // jsdelivr IIFE build.
     {
