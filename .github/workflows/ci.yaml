@@ -33,9 +33,9 @@ jobs:
 
       - run: yarn exec prettier --check ./
 
-      - run: npx tsc
+      - run: yarn exec tsc
 
-      - run: npm run build
+      - run: yarn run build
 
       - run: |
           mkdir tmp
