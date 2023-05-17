@@ -47,5 +47,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./tmp
           user_name: "github-actions"
-          user_email: "github-actions@github.com"
+          user_email: "41898282+github-actions[bot]@users.noreply.github.com"
           enable_jekyll: false
