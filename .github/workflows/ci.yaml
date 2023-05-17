@@ -26,9 +26,6 @@ jobs:
           node-version: "16"
           cache: "yarn"
 
-      - run: corepack enable
-      - run: corepack prepare --activate
-
       - run: yarn
 
       - run: yarn exec prettier --check ./
