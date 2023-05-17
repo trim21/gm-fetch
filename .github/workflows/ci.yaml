@@ -35,9 +35,8 @@ jobs:
       - run: yarn run build
 
       - run: |
-          mkdir tmp
-          cp -r dist tmp/dist
-          cp package.json src ./tmp -r
+          yarn pack
+          tar zxvf package.tgz
         if: ${{ github.event_name == 'push' }}
 
       - name: Deploy
@@ -45,7 +44,7 @@ jobs:
         if: ${{ github.event_name == 'push' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./tmp
+          publish_dir: ./package/
           user_name: "github-actions"
           user_email: "41898282+github-actions[bot]@users.noreply.github.com"
           enable_jekyll: false
