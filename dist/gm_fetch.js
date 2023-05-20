@@ -53,6 +53,7 @@ var GM_fetch = (function () {
               throw new TypeError("Failed to execute 'blob' on 'Response': body stream already read");
           }
           this._bodyUsed = true;
+          // `slice` will use empty string as default value, so need to pass all arguments.
           return Promise.resolve(this.rawBody.slice(0, this.rawBody.size, this.rawBody.type));
       }
       clone() {
