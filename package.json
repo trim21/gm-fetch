@@ -35,7 +35,10 @@
     "format": "prettier --list-different -w ./",
     "version": "npm run build",
     "build": "rollup -c",
-    "test": "tsc --noEmit && jest"
+    "test": "tsc --noEmit && jest",
+    "postinstall": "husky install",
+    "prepack": "pinst --disable",
+    "postpack": "pinst --enable"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,yml,yaml}": [
@@ -58,6 +61,7 @@
     "husky": "^8.0.3",
     "jest": "^29.5.0",
     "lint-staged": "^13.2.2",
+    "pinst": "^3.0.0",
     "prettier": "^2.8.8",
     "rollup": "^3.21.8",
     "rollup-plugin-typescript2": "^0.34.1",
