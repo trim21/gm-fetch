@@ -50,16 +50,6 @@ const GM_fetch = require("@trim21/gm-fetch");
 
 This package is using `Request` and `Response` class, it so requires a browser with fetch API support.
 
-## Local Development
-
-You will need node>=16, and enable corepack
-
-```bash
-corepack enable
-corepack prepare --activate
-yarn
-```
-
 ## Licence
 
 MIT
