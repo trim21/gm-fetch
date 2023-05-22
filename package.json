@@ -34,11 +34,12 @@
   "scripts": {
     "format": "prettier --list-different -w ./",
     "version": "npm run build",
+    "dev": "rollup --watch -c dev/rollup.config.cjs",
     "build": "rollup -c",
     "test": "tsc --noEmit && jest"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,yml,yaml}": [
+    "*.{js,jsx,cjs,mjs,ts,tsx,json,yml,yaml}": [
       "prettier --ignore-path ./.prettierignore --write "
     ]
   },
@@ -53,6 +54,7 @@
   },
   "homepage": "https://github.com/Trim21/gm-fetch",
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.0.2",
     "@types/greasemonkey": "^4.0.4",
     "@types/jest": "^29.5.1",
     "husky": "^8.0.3",
@@ -60,9 +62,11 @@
     "lint-staged": "^13.2.2",
     "prettier": "^2.8.8",
     "rollup": "^3.23.0",
+    "rollup-plugin-banner2": "^1.2.2",
     "rollup-plugin-typescript2": "^0.34.1",
     "ts-jest": "^29.1.0",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "userscript-metadata-generator": "^0.2.3"
   },
   "publishConfig": {
     "access": "public"
