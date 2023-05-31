@@ -54,7 +54,7 @@
   },
   "homepage": "https://github.com/Trim21/gm-fetch",
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^15.0.2",
+    "@rollup/plugin-node-resolve": "^15.1.0",
     "@types/greasemonkey": "^4.0.4",
     "@types/jest": "^29.5.2",
     "husky": "^8.0.3",
