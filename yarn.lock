@@ -830,7 +830,7 @@ __metadata:
     rollup: ^3.26.0
     rollup-plugin-banner2: ^1.2.2
     rollup-plugin-typescript2: ^0.35.0
-    ts-jest: ^29.1.0
+    ts-jest: ^29.1.1
     typescript: ^5.1.6
     userscript-metadata-generator: ^0.2.4
   languageName: unknown
@@ -3966,7 +3966,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-jest@npm:^29.1.0":
+"ts-jest@npm:^29.1.1":
   version: 29.1.1
   resolution: "ts-jest@npm:29.1.1"
   dependencies:
