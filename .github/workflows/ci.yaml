@@ -48,3 +48,4 @@ jobs:
           user_name: "github-actions"
           user_email: "41898282+github-actions[bot]@users.noreply.github.com"
           enable_jekyll: false
+          keep_files: false
