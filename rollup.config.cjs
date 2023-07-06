@@ -37,7 +37,7 @@ module.exports = {
     {
       format: "iife",
       name: "GM_fetch",
-      file: pkg.jsdelivr,
+      file: pkg.browser,
     },
   ],
 };
