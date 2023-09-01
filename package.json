@@ -65,7 +65,7 @@
     "rollup-plugin-banner2": "^1.2.2",
     "rollup-plugin-typescript2": "^0.35.0",
     "ts-jest": "^29.1.1",
-    "typescript": "^5.1.6",
+    "typescript": "^5.2.2",
     "userscript-metadata-generator": "^0.2.4"
   },
   "publishConfig": {
