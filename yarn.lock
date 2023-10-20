@@ -897,7 +897,7 @@ __metadata:
   dependencies:
     "@rollup/plugin-node-resolve": ^15.2.1
     "@types/greasemonkey": ^4.0.6
-    "@types/jest": ^29.5.5
+    "@types/jest": ^29.5.6
     husky: ^8.0.3
     jest: ^29.7.0
     lint-staged: ^15.0.2
@@ -1000,7 +1000,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:^29.5.5":
+"@types/jest@npm:^29.5.6":
   version: 29.5.6
   resolution: "@types/jest@npm:29.5.6"
   dependencies:
