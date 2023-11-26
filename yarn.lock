@@ -897,7 +897,7 @@ __metadata:
   dependencies:
     "@rollup/plugin-node-resolve": "npm:^15.2.3"
     "@types/greasemonkey": "npm:^4.0.6"
-    "@types/jest": "npm:^29.5.7"
+    "@types/jest": "npm:^29.5.10"
     husky: "npm:^8.0.3"
     jest: "npm:^29.7.0"
     lint-staged: "npm:^15.0.2"
@@ -1000,13 +1000,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:^29.5.7":
-  version: 29.5.7
-  resolution: "@types/jest@npm:29.5.7"
+"@types/jest@npm:^29.5.10":
+  version: 29.5.10
+  resolution: "@types/jest@npm:29.5.10"
   dependencies:
     expect: "npm:^29.0.0"
     pretty-format: "npm:^29.0.0"
-  checksum: 231c873f3d1ddac973b8f8f2ad7760677d941d85fb52d1c5dc4a311bafba4c2c1658a1040fd7054a51f4d1841f51c6ca4cabf70675ee4fa9e10fc5b8066e1de1
+  checksum: b46171d59d12a5f69bbe710f65eaf59a8073337c6b4a67dff8158575caec53f1c61f8a7d645b34d6ac3c4ea398acd30f0c5d1c4a131c0c918798019264a3397d
   languageName: node
   linkType: hard
 
