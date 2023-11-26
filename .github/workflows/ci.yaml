@@ -15,15 +15,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    name: Node ${{ matrix.node }}
-
     steps:
       - uses: actions/checkout@v4
 
       - name: Setup node
         uses: actions/setup-node@v4
         with:
-          node-version: "16"
+          node-version: "20"
           cache: "yarn"
 
       - run: yarn
