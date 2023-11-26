@@ -896,7 +896,7 @@ __metadata:
   resolution: "@trim21/gm-fetch@workspace:."
   dependencies:
     "@rollup/plugin-node-resolve": "npm:^15.2.3"
-    "@types/greasemonkey": "npm:^4.0.6"
+    "@types/greasemonkey": "npm:^4.0.7"
     "@types/jest": "npm:^29.5.7"
     husky: "npm:^8.0.3"
     jest: "npm:^29.7.0"
@@ -968,10 +968,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/greasemonkey@npm:^4.0.6":
-  version: 4.0.6
-  resolution: "@types/greasemonkey@npm:4.0.6"
-  checksum: 5118729e57a55db1cbc042bb64d0e80197d09902fa92ab94c9dd4310c4c8591f9f7a13eaad02336336506111d745948198688da1192a6a2d6fc8651f1a8b2289
+"@types/greasemonkey@npm:^4.0.7":
+  version: 4.0.7
+  resolution: "@types/greasemonkey@npm:4.0.7"
+  checksum: e6c8bdb0fcd3300cdc23eb95fc0876ed6dad42a473f04fb2aacd58f4fb49e7075bb82200d4af2e9f5eb48c5fbc355adcb14ed4ad428514b075d3cd9489eaf08f
   languageName: node
   linkType: hard
 
