@@ -32,6 +32,9 @@ async () => {
 };
 ```
 
+(you can't use `@require https://cdn.jsdelivr.net/npm/@trim21/gm-fetch` directly if you want to upload your script to GreasyFork,
+you will need to specify version you want to use, for example `@require https://cdn.jsdelivr.net/npm/@trim21/gm-fetch@0.1.15`)
+
 ## if you are using js bundler
 
 ES Module:
