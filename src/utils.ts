@@ -47,7 +47,7 @@ class ResImpl implements Response {
     this.rawBody = body;
     this.init = init;
 
-    this.body = toReadableStream(body);
+    this.body = body.stream();
     const { headers, statusCode, statusText, finalUrl, redirected } = init;
     this.headers = headers;
     this.status = statusCode;
@@ -131,13 +131,4 @@ function decode(body: string) {
     });
 
   return form;
-}
-
-function toReadableStream(value: Blob) {
-  return new ReadableStream({
-    start(controller) {
-      controller.enqueue(value);
-      controller.close();
-    },
-  });
 }
