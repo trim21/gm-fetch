@@ -14,22 +14,24 @@ You can set some HTTP headers allowed by `GM.xmlHttpRequest` but not allowed by 
 
 ## Example
 
+add this script to UserScript manager and visit <https://example.com/>
+
 ```javascript
 // ==UserScript==
 // @name        new user script
 // @version     0.0.1
-// @match       http*://*/*
+// @match       https://example.com/*
 // @grant       GM.xmlHttpRequest
 // @require     https://cdn.jsdelivr.net/npm/@trim21/gm-fetch
 // @run-at      document-end
 // @connect     httpbin.org
 // ==/UserScript==
 
-async () => {
-  const res = await GM_fetch("https://httpbin.org/headers", { method: "POST" });
+(async () => {
+  const res = await GM_fetch("https://httpbin.org/headers", { method: "GET" });
   const data = await res.json();
   console.log(data);
-};
+})();
 ```
 
 (you can't use `@require https://cdn.jsdelivr.net/npm/@trim21/gm-fetch` directly if you want to upload your script to GreasyFork,
