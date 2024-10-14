@@ -6,7 +6,7 @@
     "outDir": "./dist/",
     "declarationDir": "./dist/types",
     "esModuleInterop": false,
-    "moduleResolution": "Node",
+    "moduleResolution": "Bundler",
     "forceConsistentCasingInFileNames": true,
     "declaration": true,
     "declarationMap": true,

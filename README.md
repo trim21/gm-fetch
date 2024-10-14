@@ -55,6 +55,8 @@ const GM_fetch = require("@trim21/gm-fetch");
 
 This package is using `Request` and `Response` class, it so requires a browser with fetch API support.
 
+<https://caniuse.com/?search=Blob.stream>
+
 ## Licence
 
 MIT
