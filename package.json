@@ -10,7 +10,7 @@
     "printWidth": 120,
     "trailingComma": "all"
   },
-  "packageManager": "yarn@4.5.0",
+  "packageManager": "yarn@4.5.1",
   "sideEffects": false,
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
