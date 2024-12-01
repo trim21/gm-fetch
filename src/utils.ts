@@ -122,7 +122,6 @@ class ResImpl implements Response {
 
     return new Uint8Array(await this.rawBody.arrayBuffer());
   }
-
 }
 
 function decode(body: string) {
