@@ -82,7 +82,7 @@ class ResImpl {
     }
     async bytes() {
         if (this.bodyUsed) {
-            throw new TypeError("Failed to execute 'blob' on 'Response': body stream already read");
+            throw new TypeError("Failed to execute 'bytes' on 'Response': body stream already read");
         }
         this._bodyUsed = true;
         return new Uint8Array(await this.rawBody.arrayBuffer());
