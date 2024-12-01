@@ -116,7 +116,7 @@ class ResImpl implements Response {
 
   async bytes(): Promise<Uint8Array> {
     if (this.bodyUsed) {
-      throw new TypeError("Failed to execute 'blob' on 'Response': body stream already read");
+      throw new TypeError("Failed to execute 'bytes' on 'Response': body stream already read");
     }
     this._bodyUsed = true;
 
