@@ -113,6 +113,16 @@ class ResImpl implements Response {
     this._bodyUsed = true;
     return this.rawBody.text();
   }
+
+  async bytes(): Promise<Uint8Array> {
+    if (this.bodyUsed) {
+      throw new TypeError("Failed to execute 'blob' on 'Response': body stream already read");
+    }
+    this._bodyUsed = true;
+
+    return new Uint8Array(await this.rawBody.arrayBuffer());
+  }
+
 }
 
 function decode(body: string) {
