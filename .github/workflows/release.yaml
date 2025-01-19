@@ -27,7 +27,7 @@ jobs:
         uses: trim21/changelog-previous-tag@master
         with:
           token: ${{ github.token }}
-          version-spec: sember
+          version-spec: semver
 
       - name: Update CHANGELOG
         id: changelog
