@@ -45,12 +45,6 @@ ES Module:
 import GM_fetch from "@trim21/gm-fetch";
 ```
 
-CommonJS (not recommended):
-
-```javascript
-const GM_fetch = require("@trim21/gm-fetch");
-```
-
 ## Browser Compatibility
 
 This package is using `Request` and `Response` class, it so requires a browser with fetch API support.

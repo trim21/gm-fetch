@@ -25,14 +25,6 @@ module.exports = {
       sourcemap: true,
       sourcemapExcludeSources: false,
     },
-    // CommonJS (for Node) build.
-    {
-      format: "cjs",
-      file: pkg.main,
-      exports: "default",
-      sourcemap: true,
-      sourcemapExcludeSources: false,
-    },
     // jsdelivr IIFE build.
     {
       format: "iife",
