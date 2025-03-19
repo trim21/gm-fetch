@@ -1,1 +1,4 @@
 yarn.lock merge=binary linguist-language=YAML linguist-generated=true
+.yarn/plugins/ merge=binary linguist-generated=true
+.yarn/releases/ merge=binary linguist-generated=true
+
