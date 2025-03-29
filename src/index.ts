@@ -17,10 +17,19 @@ function XHR(request: Request, init: RequestInit | undefined, data: string | und
       return reject(new DOMException("Aborted", "AbortError"));
     }
 
+    const headers = new Headers(request.headers);
+
+    if (init?.headers) {
+      const initHeaders = new Headers(init.headers);
+      initHeaders.forEach((value, key) => {
+        headers.set(key, value);
+      });
+    }
+
     GM.xmlHttpRequest({
       url: request.url,
       method: gmXHRMethod(request.method.toUpperCase()),
-      headers: Object.fromEntries(new Headers(init?.headers).entries()),
+      headers: Object.fromEntries(headers.entries()),
       data: data,
       responseType: "blob",
       onload(res) {
