@@ -41,7 +41,7 @@ class ResImpl implements Response {
   private readonly rawBody: Blob;
   private readonly init: ResInit;
 
-  readonly body: ReadableStream<Uint8Array> | null;
+  readonly body: ReadableStream<Uint8Array<ArrayBuffer>> | null;
   readonly headers: Headers;
   readonly redirected: boolean;
   readonly status: number;
@@ -120,7 +120,7 @@ class ResImpl implements Response {
     return this.rawBody.text();
   }
 
-  async bytes(): Promise<Uint8Array> {
+  async bytes(): Promise<Uint8Array<ArrayBuffer>> {
     if (this.bodyUsed) {
       throw new TypeError("Failed to execute 'bytes' on 'Response': body stream already read");
     }
