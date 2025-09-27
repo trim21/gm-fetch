@@ -4,14 +4,6 @@ using fetch based on `GM.xmlHttpRequest` in userscript.
 
 **Don't forget to add `@grant GM.xmlHttpRequest` and `@connect` in your metadata**
 
-## Introduction
-
-It's not 100% same with fetch API because some security limit like cors site request doesn't exist on `GM.xmlHttpRequest`.
-
-And `AbortSignal` is not supported very well due to the limitation of `GM.xmlHttpRequest`.
-
-You can set some HTTP headers allowed by `GM.xmlHttpRequest` but not allowed by standard fetch API.
-
 ## Example
 
 add this script to UserScript manager and visit <https://example.com/>
@@ -44,6 +36,19 @@ ES Module:
 ```javascript
 import GM_fetch from "@trim21/gm-fetch";
 ```
+
+## Compatibility Differences
+
+This library provides a fetch API based on `GM.xmlHttpRequest`.
+
+It do not behave 100% same as the standard fetch API, because some security limitations like CORS site requests don't exist on `GM.xmlHttpRequest`.
+
+### Key Differences:
+
+- **AbortSignal**: Not fully supported due to the limitations of `GM.xmlHttpRequest`
+- **CORS**: Cross-origin requests work without CORS restrictions, unlike standard fetch
+- **HTTP Headers**: You can set some HTTP headers that are allowed by `GM.xmlHttpRequest` but not allowed by standard fetch API
+- **Redirect Parameter**: The `redirect` parameter `'follow' | 'error' | 'manual'` is not supported. All redirects are automatically followed by `GM.xmlHttpRequest`, similar to `redirect: 'follow'` behavior
 
 ## Browser Compatibility
 
