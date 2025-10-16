@@ -79,4 +79,65 @@ describe("call", function () {
       authorization: "Bearer xxxxxx",
     });
   });
+
+  it("should handle abort signal", async function () {
+    const abortController = new AbortController();
+    let abortCalled = false;
+    let onabortHandler: ((response: GM.Response<any>) => void) | undefined;
+
+    const xmlHttpRequest: GmXhr = (option) => {
+      onabortHandler = option.onabort;
+      // Return a mock object with abort method
+      return {
+        abort: () => {
+          abortCalled = true;
+          // Call the onabort handler when abort is called
+          if (onabortHandler) {
+            onabortHandler({} as GM.Response<any>);
+          }
+        },
+      } as any;
+    };
+
+    // @ts-ignore
+    global.GM = {
+      xmlHttpRequest,
+    };
+
+    const promise = GM_fetch("https://example.com/", {
+      signal: abortController.signal,
+    });
+
+    // Abort the request
+    abortController.abort();
+
+    // Should reject with AbortError
+    await expect(promise).rejects.toThrow("Aborted");
+    expect(abortCalled).toBe(true);
+  });
+
+  it("should reject immediately if signal already aborted", async function () {
+    const abortController = new AbortController();
+    abortController.abort();
+
+    let xmlHttpRequestCalled = false;
+    const xmlHttpRequest: GmXhr = (option) => {
+      xmlHttpRequestCalled = true;
+      return {} as any;
+    };
+
+    // @ts-ignore
+    global.GM = {
+      xmlHttpRequest,
+    };
+
+    const promise = GM_fetch("https://example.com/", {
+      signal: abortController.signal,
+    });
+
+    // Should reject with AbortError
+    await expect(promise).rejects.toThrow("Aborted");
+    // Should not call xmlHttpRequest if signal is already aborted
+    expect(xmlHttpRequestCalled).toBe(false);
+  });
 });
