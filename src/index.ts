@@ -1,5 +1,9 @@
 import { parseGMResponse } from "./utils";
 
+interface GMXHRReturnValue {
+  abort: () => void;
+}
+
 export default async function GM_fetch(input: RequestInfo | URL, init?: RequestInit): Promise<Response> {
   const request = new Request(input, init);
 
@@ -17,7 +21,8 @@ function XHR(request: Request, init: RequestInit | undefined, data: string | und
       return reject(new DOMException("Aborted", "AbortError"));
     }
 
-    GM.xmlHttpRequest({
+    // @ts-expect-error - type definition says it returns void
+    const ret: GMXHRReturnValue = GM.xmlHttpRequest({
       url: request.url,
       method: gmXHRMethod(request.method.toUpperCase()),
       headers: Object.fromEntries(new Headers(init?.headers).entries()),
@@ -39,6 +44,12 @@ function XHR(request: Request, init: RequestInit | undefined, data: string | und
       onerror(err) {
         reject(new TypeError("Failed to fetch: " + err.finalUrl));
       },
+    });
+
+    request.signal?.addEventListener("abort", () => {
+      if (ret && typeof ret.abort === "function") {
+        ret.abort();
+      }
     });
   });
 }

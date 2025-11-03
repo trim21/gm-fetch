@@ -122,7 +122,8 @@ function XHR(request, init, data) {
         if (request.signal && request.signal.aborted) {
             return reject(new DOMException("Aborted", "AbortError"));
         }
-        GM.xmlHttpRequest({
+        // @ts-expect-error - type definition says it returns void
+        const ret = GM.xmlHttpRequest({
             url: request.url,
             method: gmXHRMethod(request.method.toUpperCase()),
             headers: Object.fromEntries(new Headers(init?.headers).entries()),
@@ -145,6 +146,11 @@ function XHR(request, init, data) {
             onerror(err) {
                 reject(new TypeError("Failed to fetch: " + err.finalUrl));
             },
+        });
+        request.signal?.addEventListener("abort", () => {
+            if (ret && typeof ret.abort === "function") {
+                ret.abort();
+            }
         });
     });
 }
