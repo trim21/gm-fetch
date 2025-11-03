@@ -46,13 +46,11 @@ function XHR(request: Request, init: RequestInit | undefined, data: string | und
       },
     });
 
-    if (request.signal) {
-      request.signal.addEventListener("abort", () => {
-        if (ret && typeof ret.abort === "function") {
-          ret.abort();
-        }
-      });
-    }
+    request.signal?.addEventListener("abort", () => {
+      if (ret && typeof ret.abort === "function") {
+        ret.abort();
+      }
+    });
   });
 }
 
