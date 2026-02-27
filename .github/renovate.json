@@ -6,5 +6,7 @@
     "github>Trim21/renovate-config:monthly"
   ],
   "automerge": true,
-  "rangeStrategy": "bump"
+  "rangeStrategy": "bump",
+  "labels": ["ci:auto-merge", "dependencies"],
+  "prConcurrentLimit": 3
 }
