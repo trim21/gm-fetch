@@ -1073,10 +1073,10 @@ __metadata:
     "@types/greasemonkey": "npm:^4.0.7"
     "@types/jest": "npm:^30.0.0"
     husky: "npm:^9.1.7"
-    jest: "npm:^30.2.0"
-    lint-staged: "npm:^16.3.1"
+    jest: "npm:^30.3.0"
+    lint-staged: "npm:^16.4.0"
     prettier: "npm:^3.8.1"
-    rollup: "npm:^4.59.0"
+    rollup: "npm:^4.60.0"
     rollup-plugin-banner2: "npm:^1.3.1"
     rollup-plugin-typescript2: "npm:^0.36.0"
     ts-jest: "npm:^29.4.6"
@@ -2877,7 +2877,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest@npm:^30.2.0":
+"jest@npm:^30.3.0":
   version: 30.3.0
   resolution: "jest@npm:30.3.0"
   dependencies:
@@ -2967,7 +2967,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lint-staged@npm:^16.3.1":
+"lint-staged@npm:^16.4.0":
   version: 16.4.0
   resolution: "lint-staged@npm:16.4.0"
   dependencies:
@@ -3645,7 +3645,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup@npm:^4.59.0":
+"rollup@npm:^4.60.0":
   version: 4.60.0
   resolution: "rollup@npm:4.60.0"
   dependencies:
