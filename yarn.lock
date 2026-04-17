@@ -1072,6 +1072,7 @@ __metadata:
     "@rollup/plugin-node-resolve": "npm:^16.0.3"
     "@types/greasemonkey": "npm:^4.0.7"
     "@types/jest": "npm:^30.0.0"
+    "@types/node": "npm:^25.6.0"
     husky: "npm:^9.1.7"
     jest: "npm:^30.3.0"
     lint-staged: "npm:^16.4.0"
@@ -1184,7 +1185,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*":
+"@types/node@npm:*, @types/node@npm:^25.6.0":
   version: 25.6.0
   resolution: "@types/node@npm:25.6.0"
   dependencies:
