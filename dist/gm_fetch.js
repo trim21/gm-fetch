@@ -28,9 +28,9 @@ var GM_fetch = (function () {
   }
   class ResImpl {
       constructor(body, init) {
-          this.rawBody = body;
+          this.rawBody = body ?? new Blob([]);
           this.init = init;
-          this.body = body.stream();
+          this.body = body?.stream() ?? null;
           const { headers, statusCode, statusText, finalUrl, redirected } = init;
           this.headers = headers;
           this.status = statusCode;
