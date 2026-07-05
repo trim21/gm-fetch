@@ -43,6 +43,32 @@ describe("call", function () {
     expect(realCall?.method).toBe("POST");
   });
 
+  it("should handle null response body", async function () {
+    const xmlHttpRequest: GmXhr = (option) => {
+      option?.onload?.({
+        finalUrl: "https://example.com/u",
+        readyState: 4,
+        responseHeaders: "content-type: text/plain",
+        responseText: "",
+        status: 200,
+        responseXML: false,
+        statusText: "",
+        response: undefined,
+        context: undefined,
+      });
+    };
+    // @ts-ignore
+    global.GM = {
+      xmlHttpRequest,
+    };
+
+    const res = await GM_fetch("https://example.com/", { method: "HEAD" });
+
+    expect(res.url).toBe("https://example.com/u");
+    expect(res.body).toBe(null);
+    expect(await res.text()).toBe("");
+  });
+
   it("should send headers", async function () {
     let realHeader = null;
     const xmlHttpRequest: GmXhr = (option) => {
