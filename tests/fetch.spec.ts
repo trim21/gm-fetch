@@ -167,3 +167,30 @@ describe("call", function () {
     expect(xmlHttpRequestCalled).toBe(false);
   });
 });
+
+describe("ResImpl", () => {
+  it("should look like a Response", async function () {
+    let realCall: GM.Request | undefined;
+    const xmlHttpRequest: GmXhr = (option) => {
+      realCall = option;
+      setTimeout(() => {
+        option?.onload?.({
+          finalUrl: "https://example.com/u",
+          readyState: 4,
+          responseHeaders: "origin: example.com\r\ndate: Tue, 22 Nov 2022 15:59:43 GMT",
+          responseText: "test",
+          status: 200,
+          responseXML: false,
+          statusText: "",
+          response: new Blob([Buffer.from("test", "utf8")]),
+          context: undefined,
+        });
+      });
+    };
+    // @ts-ignore
+    global.GM = { xmlHttpRequest };
+
+    const res = await GM_fetch("https://example.com/", { method: "POST" });
+    expect(Object.prototype.toString.call(res)).toBe("[object Response]");
+  });
+});
