@@ -43,6 +43,10 @@ class ResImpl {
     get ok() {
         return this.status < 300;
     }
+    // make it compatible with ky
+    get [Symbol.toStringTag]() {
+        return "Response";
+    }
     arrayBuffer() {
         if (this.bodyUsed) {
             throw new TypeError("Failed to execute 'arrayBuffer' on 'Response': body stream already read");
